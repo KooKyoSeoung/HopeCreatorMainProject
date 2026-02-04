@@ -1,3 +1,5 @@
+using UnityEngine;
+
 [System.Serializable]
 public class PitchData
 {
@@ -7,4 +9,5 @@ public class PitchData
     public float hitEnd = 0.75f;
 
     public bool isStrike;
+    public Vector2 targetPosition;
 }

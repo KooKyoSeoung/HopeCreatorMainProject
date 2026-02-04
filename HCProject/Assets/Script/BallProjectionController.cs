@@ -14,16 +14,21 @@ public class BallProjectionController : MonoBehaviour
     private float totalTime;
     private bool isProjecting = false;
     private bool ballActivated = false;
+    private Vector2 startPosition;
+    private Vector2 targetPosition;
 
-    public void StartProjection(float time)
+    public void StartProjection(float time, Vector2 targetPos)
     {
         totalTime = time;
         startTime = Time.time;
         isProjecting = true;
         ballActivated = false;
+        targetPosition = targetPos;
 
         if (ballProjection != null)
         {
+            // 시작 위치는 투수 위치 (또는 현재 위치)
+            startPosition = ballProjection.localPosition;
             ballProjection.localScale = Vector3.one * minScale;
             ballProjection.gameObject.SetActive(true);
         }
@@ -46,6 +51,9 @@ public class BallProjectionController : MonoBehaviour
         {
             float scale = Mathf.Lerp(minScale, maxScale, t);
             ballProjection.localScale = Vector3.one * scale;
+            
+            Vector2 currentPosition = Vector2.Lerp(startPosition, targetPosition, t);
+            ballProjection.localPosition = new Vector3(currentPosition.x, currentPosition.y, ballProjection.localPosition.z);
         }
 
         if (t >= 1.0f && !ballActivated)
@@ -61,6 +69,7 @@ public class BallProjectionController : MonoBehaviour
             if (ballImg != null)
             {
                 ballImg.SetActive(true);
+                ballImg.transform.localPosition = new Vector3(targetPosition.x, targetPosition.y, ballImg.transform.localPosition.z);
             }
         }
     }

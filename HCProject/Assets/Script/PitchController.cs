@@ -35,13 +35,11 @@ public class PitchController : MonoBehaviour
         startTime = Time.time;
         inputUsed = false;
 
-        // 투수 스프라이트 변경
         if (pitcherSprite != null)
             pitcherSprite.PitchSprite();
         
-        // BallProjection 시작
         if (ballProjection != null)
-            ballProjection.StartProjection(pitch.totalTime);
+            ballProjection.StartProjection(pitch.totalTime, pitch.targetPosition);
 
         GameManager.Instance.ChangeState(GameState.Pitching);
     }
@@ -60,7 +58,5 @@ public class PitchController : MonoBehaviour
             return;
 
         GameManager.Instance.ChangeState(GameState.Result);
-
-        
     }
 }
