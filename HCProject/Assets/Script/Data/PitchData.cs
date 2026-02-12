@@ -9,5 +9,9 @@ public class PitchData
     public float hitEnd = 0.75f;
 
     public bool isStrike;
+    public PitchType pitchType;
+    public Vector2 startPosition;
     public Vector2 targetPosition;
+    public Vector2 controlPoint1;
+    public Vector2 controlPoint2;
 }

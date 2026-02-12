@@ -7,6 +7,8 @@ public class PitchController : MonoBehaviour
     public BallProjectionController ballProjection;
     public PitcherSprite pitcherSprite;
 
+    public HitResult LastResult { get; private set; }
+
     private PitchData pitch;
     private float startTime;
     private bool inputUsed;
@@ -39,17 +41,24 @@ public class PitchController : MonoBehaviour
             pitcherSprite.PitchSprite();
         
         if (ballProjection != null)
-            ballProjection.StartProjection(pitch.totalTime, pitch.targetPosition);
+            ballProjection.StartProjection(pitch.totalTime, pitch.startPosition, pitch.targetPosition, pitch.controlPoint1, pitch.controlPoint2);
 
         GameManager.Instance.ChangeState(GameState.Pitching);
     }
 
+    public void ResetPitch()
+    {
+        if (pitcherSprite != null)
+            pitcherSprite.IdleSprite();
+
+        if (ballProjection != null)
+            ballProjection.Reset();
+    }
+
     private void OnSwing(float normalizedTime)
     {
-        HitResult result = HitJudge.Judge(normalizedTime, pitch.hitStart, pitch.hitEnd);
-
+        LastResult = HitJudge.Judge(normalizedTime, pitch.hitStart, pitch.hitEnd);
         GameManager.Instance.ChangeState(GameState.Result);
-        // Result;
     }
 
     private void OnPitchFinished()
@@ -57,6 +66,7 @@ public class PitchController : MonoBehaviour
         if (inputUsed)
             return;
 
+        LastResult = pitch.isStrike ? HitResult.Strike : HitResult.Ball;
         GameManager.Instance.ChangeState(GameState.Result);
     }
 }
