@@ -24,31 +24,31 @@ public class PitchGenerator
             totalTime = 1.0f, startOffset = new Vector2(0f, 0.5f),
             cpOffset1 = new Vector2(0f, 0f),
             cpOffset2 = new Vector2(0f, 0f),
-            hitStart = 0.60f, hitEnd = 0.70f
+            hitStart = 0.60f, hitEnd = 0.90f
         }},
         { PitchType.Curve, new PitchTypeConfig {
             totalTime = 1.8f, startOffset = new Vector2(0f, 1.4f),
             cpOffset1 = new Vector2(0f, 1.3f),
             cpOffset2 = new Vector2(0f, 1.6f),
-            hitStart = 0.65f, hitEnd = 0.78f
+            hitStart = 1.4f, hitEnd = 1.7f
         }},
         { PitchType.Slider, new PitchTypeConfig {
             totalTime = 1.3f, startOffset = new Vector2(0.3f, 0.9f),
             cpOffset1 = new Vector2(0f, 0.4f),
             cpOffset2 = new Vector2(-0.8f, 0.4f),
-            hitStart = 0.62f, hitEnd = 0.73f
+            hitStart = 0.9f, hitEnd = 1.2f
         }},
         { PitchType.Changeup, new PitchTypeConfig {
             totalTime = 2.0f, startOffset = new Vector2(-0.8f, 0.7f),
             cpOffset1 = new Vector2(0f, 0.6f),
             cpOffset2 = new Vector2(0f, 0.9f),
-            hitStart = 0.68f, hitEnd = 0.80f
+            hitStart = 1.6f, hitEnd = 1.9f
         }},
         { PitchType.Cutter, new PitchTypeConfig {
             totalTime = 1.1f, startOffset = new Vector2(0.2f, 0.6f),
             cpOffset1 = new Vector2(0f, 0.2f),
             cpOffset2 = new Vector2(-0.8f, 0.2f),
-            hitStart = 0.60f, hitEnd = 0.72f
+            hitStart = 0.7f, hitEnd = 1.0f
         }},
     };
 
