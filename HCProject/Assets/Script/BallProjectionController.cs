@@ -78,7 +78,15 @@ public class BallProjectionController : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void StopProjection()
+    {
+        isProjecting = false;
+
+        if (ballProjection != null)
+            ballProjection.gameObject.SetActive(false);
+    }
+
+    public void ResetProjection()
     {
         isProjecting = false;
         ballActivated = false;

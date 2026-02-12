@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class HitJudge : MonoBehaviour
 {
-    public static HitResult Judge(float time, float start, float end)
+    public static HitResult Judge(float time, float start, float end, bool isStrike)
     {
         if (time < start || time > end)
-            return HitResult.Miss;
+            return HitResult.Strike;
+
+        if (!isStrike)
+            return HitResult.Foul;
 
         float center = (start + end) * 0.5f;
         float diff = Mathf.Abs(time - center);
@@ -23,7 +26,7 @@ public enum HitResult
 {
     Perfect,
     Good,
-    Miss,
+    Foul,
     Strike,
     Ball
 }

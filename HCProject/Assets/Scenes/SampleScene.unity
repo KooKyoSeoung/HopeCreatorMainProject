@@ -389,6 +389,8 @@ MonoBehaviour:
   pitchController: {fileID: 1653523056}
   strikeUI: {fileID: 753984896}
   ballUI: {fileID: 1735054553}
+  foulUI: {fileID: 2085521510}
+  hitUI: {fileID: 1568281602}
 --- !u!1 &387697648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,6 +1284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballProjection: {fileID: 759956589}
   pitcherSprite: {fileID: 387697650}
+  batterSprite: {fileID: 18870929}
 --- !u!1 &1668092564
 GameObject:
   m_ObjectHideFlags: 0

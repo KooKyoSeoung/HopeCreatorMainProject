@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [Header("Result UI")]
     [SerializeField] private GameObject strikeUI;
     [SerializeField] private GameObject ballUI;
+    [SerializeField] private GameObject foulUI;
+    [SerializeField] private GameObject hitUI;
 
     private PitchGenerator pitchGenerator;
 
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
 
             HideResultUI();
             pitchController.ResetPitch();
+            pitchController.batterSprite.IdleSprite();
         }
     }
 
@@ -60,6 +63,10 @@ public class GameManager : MonoBehaviour
             strikeUI.SetActive(true);
         else if (result == HitResult.Ball && ballUI != null)
             ballUI.SetActive(true);
+        else if (result == HitResult.Foul && foulUI != null)
+            foulUI.SetActive(true);
+        else if ((result == HitResult.Perfect || result == HitResult.Good) && hitUI != null)
+            hitUI.SetActive(true);
     }
 
     private void HideResultUI()
@@ -68,6 +75,10 @@ public class GameManager : MonoBehaviour
             strikeUI.SetActive(false);
         if (ballUI != null)
             ballUI.SetActive(false);
+        if (foulUI != null)
+            foulUI.SetActive(false);
+        if (hitUI != null)
+            hitUI.SetActive(false);
     }
 
     public void ChangeState(GameState state)
