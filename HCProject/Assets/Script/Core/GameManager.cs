@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float readyDelay = 3f;
     [SerializeField] private float resultDelay = 3f;
 
+    [Header("Stage Count (Optional)")]
+    [SerializeField] private StageCountSetup stageCountSetup;
+
     [Header("References")]
     public PitchController pitchController;
 
@@ -22,17 +25,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject hitUI;
 
     private PitchGenerator pitchGenerator;
+    private CountState currentCountState;
+
+    public CountState CurrentCount => currentCountState;
 
     void Awake()
     {
         Instance = this;
         pitchGenerator = new PitchGenerator();
+        currentCountState = new CountState();
     }
 
     void Start()
     {
+        InitializeCount(stageCountSetup);
         HideResultUI();
         StartCoroutine(GameLoop());
+    }
+
+    public void InitializeCount(StageCountSetup countSetup)
+    {
+        currentCountState.InitCountState(countSetup);
     }
 
     private IEnumerator GameLoop()
