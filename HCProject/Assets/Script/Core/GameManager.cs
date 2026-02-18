@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float readyDelay = 3f;
     [SerializeField] private float resultDelay = 3f;
 
-    [Header("Stage Count (Optional)")]
-    [SerializeField] private StageCountSetup stageCountSetup;
+    [Header("Inning Setup")]
+    [SerializeField] private InningSetup inningSetup;
 
     [Header("References")]
     public PitchController pitchController;
@@ -25,27 +25,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject hitUI;
 
     private PitchGenerator pitchGenerator;
-    private CountState currentCountState;
+    private InningState currentInningState;
 
-    public CountState CurrentCount => currentCountState;
+    public InningState CurrentInning => currentInningState;
 
     void Awake()
     {
         Instance = this;
         pitchGenerator = new PitchGenerator();
-        currentCountState = new CountState();
+        currentInningState = new InningState();
     }
 
     void Start()
     {
-        InitializeCount(stageCountSetup);
+        InitializeInning(inningSetup);
         HideResultUI();
         StartCoroutine(GameLoop());
     }
 
-    public void InitializeCount(StageCountSetup countSetup)
+    public void InitializeInning(InningSetup setup)
     {
-        currentCountState.InitCountState(countSetup);
+        currentInningState.Initialize(setup);
     }
 
     private IEnumerator GameLoop()
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitUntil(() => State == GameState.Result);
 
+            currentInningState.ApplyResult(pitchController.LastResult);
             ShowResultUI(pitchController.LastResult);
 
             yield return new WaitForSeconds(resultDelay);
