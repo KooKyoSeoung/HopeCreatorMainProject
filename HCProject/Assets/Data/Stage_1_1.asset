@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718f6a65b5076fd4db2559522151d2ca, type: 3}
   m_Name: Stage_1_1
   m_EditorClassIdentifier: 
-  stageName: "[1-1] \uB4DD\uC810"
+  stageName: "1\uC810 \uB4DD\uC810"
   inningSetup:
     strikeCount: 0
     ballCount: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
     questType: 0
     targetValue: 1
     description: "\uBCFC\uB137/\uC548\uD0C0/\uD648\uB7F0\uC73C\uB85C 1\uC810 \uC774\uC0C1
-      \uB4DD\uC810\uD558\uC138\uC694."
+      \uB4DD\uC810\uD558\uAE30"
