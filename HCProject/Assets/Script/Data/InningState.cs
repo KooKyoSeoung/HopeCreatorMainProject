@@ -21,6 +21,11 @@ public class InningSetup
     public bool runnerOnFirst = false;
     public bool runnerOnSecond = false;
     public bool runnerOnThird = false;
+
+    [Min(0)]
+    public int scoreTop = 0;
+    [Min(0)]
+    public int scoreBottom = 0;
 }
 
 public class InningState
@@ -33,6 +38,11 @@ public class InningState
     public bool RunnerOnFirst { get; private set; }
     public bool RunnerOnSecond { get; private set; }
     public bool RunnerOnThird { get; private set; }
+    public int ScoreTop { get; private set; }
+    public int ScoreBottom { get; private set; }
+
+    public int TotalHits { get; private set; }
+    public int TotalHomeruns { get; private set; }
 
     public void Initialize(InningSetup setup)
     {
@@ -46,6 +56,10 @@ public class InningState
             RunnerOnFirst = false;
             RunnerOnSecond = false;
             RunnerOnThird = false;
+            ScoreTop = 0;
+            ScoreBottom = 0;
+            TotalHits = 0;
+            TotalHomeruns = 0;
             return;
         }
 
@@ -57,6 +71,10 @@ public class InningState
         RunnerOnFirst = setup.runnerOnFirst;
         RunnerOnSecond = setup.runnerOnSecond;
         RunnerOnThird = setup.runnerOnThird;
+        ScoreTop = Mathf.Max(0, setup.scoreTop);
+        ScoreBottom = Mathf.Max(0, setup.scoreBottom);
+        TotalHits = 0;
+        TotalHomeruns = 0;
     }
 
     public void ApplyResult(HitResult result)
@@ -71,6 +89,12 @@ public class InningState
                 break;
             case HitResult.Foul:
                 OnFoul();
+                break;
+            case HitResult.Good:
+                OnHit();
+                break;
+            case HitResult.Perfect:
+                OnHomerun();
                 break;
         }
     }
@@ -104,45 +128,74 @@ public class InningState
         }
     }
 
+    private void OnHit()
+    {
+        TotalHits++;
+        ApplyWalk();
+        ResetCount();
+    }
+
+    private void OnHomerun()
+    {
+        TotalHits++;
+        TotalHomeruns++;
+        int score = 1;
+
+        if (RunnerOnFirst && RunnerOnSecond && RunnerOnThird)
+        {
+            score = 4;
+        }
+        else if ((RunnerOnFirst && RunnerOnSecond) || (RunnerOnFirst && RunnerOnThird) || (RunnerOnSecond && RunnerOnThird))
+        {
+            score = 3;
+        }
+        else if (RunnerOnFirst || RunnerOnSecond || RunnerOnThird)
+        {
+            score = 2;
+        }
+
+        AddScore(score);
+        ResetCount();
+        ClearRunners();
+    }
+
     private void RecordOut()
     {
         OutCount++;
         ResetCount();
 
-        if (OutCount >= 3)
-        {
-            AdvanceHalfInning();
-        }
+        // gameOver
     }
 
     private void ApplyWalk()
     {
         if (RunnerOnFirst && RunnerOnSecond && RunnerOnThird)
         {
-            // 득점 처리
-            RunnerOnThird = true;
-            RunnerOnSecond = true;
-            RunnerOnFirst = true;
+            AddScore(1);
         }
         else if (RunnerOnFirst && RunnerOnSecond)
         {
             RunnerOnThird = true;
-            RunnerOnSecond = true;
-            RunnerOnFirst = true;
         }
         else if (RunnerOnFirst)
         {
             RunnerOnSecond = true;
-            RunnerOnFirst = true;
         }
+
+        RunnerOnFirst = true;
+    }
+
+    private void AddScore(int runs)
+    {
+        if (IsTop)
+            ScoreTop += runs;
         else
-        {
-            RunnerOnFirst = true;
-        }
+            ScoreBottom += runs;
     }
 
     private void AdvanceHalfInning()
     {
+        // 3 아웃 시 게임 오버 판정이나, 추후 공수교대를 위해 작성
         OutCount = 0;
         ResetCount();
         ClearRunners();
