@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718f6a65b5076fd4db2559522151d2ca, type: 3}
   m_Name: Stage_1_1
   m_EditorClassIdentifier: 
-  stageName: 1-1
+  stageName: "[1-1] \uB4DD\uC810"
   inningSetup:
     strikeCount: 0
     ballCount: 0
