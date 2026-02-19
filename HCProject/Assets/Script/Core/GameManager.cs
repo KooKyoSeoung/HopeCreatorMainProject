@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     public PitchController pitchController;
     public UI_Board uiBoard;
+    public UI_Quest uiQuest;
 
     [Header("Result UI")]
     [SerializeField] private GameObject strikeUI;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         StageManager.Instance.InitStage(stageData);
         UpdateBoard();
+        UpdateQuest(stageData);
         HideResultUI();
         StopAllCoroutines();
         StartCoroutine(GameLoop());
@@ -119,6 +121,12 @@ public class GameManager : MonoBehaviour
     {
         if (uiBoard != null)
             uiBoard.UpdateBoard(currentInningState);
+    }
+
+    private void UpdateQuest(StageData stageData)
+    {
+        if (uiQuest != null)
+            uiQuest.SetQuest(stageData);
     }
 
     public void ChangeState(GameState state)

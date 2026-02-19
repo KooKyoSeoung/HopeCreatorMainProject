@@ -471,6 +471,7 @@ MonoBehaviour:
   resultDelay: 3
   pitchController: {fileID: 1653523056}
   uiBoard: {fileID: 309620490}
+  uiQuest: {fileID: 492154890}
   strikeUI: {fileID: 753984896}
   ballUI: {fileID: 1735054553}
   foulUI: {fileID: 2085521510}
@@ -739,6 +740,7 @@ GameObject:
   - component: {fileID: 492154887}
   - component: {fileID: 492154889}
   - component: {fileID: 492154888}
+  - component: {fileID: 492154890}
   m_Layer: 5
   m_Name: UI_Quest
   m_TagString: Untagged
@@ -805,6 +807,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492154886}
   m_CullTransparentMesh: 1
+--- !u!114 &492154890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492154886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98f012ddc044d343aa907ea0bd50466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTitle: {fileID: 1093445411}
+  questBody: {fileID: 1372369293}
 --- !u!1 &513987957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1\uC810 \uB4DD\uC810"
+  m_text: .
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7a7ae48c02141e94abf16a868c8944f6, type: 2}
   m_sharedMaterial: {fileID: -9118544796243491740, guid: 7a7ae48c02141e94abf16a868c8944f6, type: 2}
@@ -2282,7 +2298,7 @@ GameObject:
   - component: {fileID: 1372369294}
   - component: {fileID: 1372369293}
   m_Layer: 5
-  m_Name: Quest_Title (1)
+  m_Name: Quest_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2327,8 +2343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBCFC\uB137/\uC548\uD0C0/\uD648\uB7F0\uC73C\uB85C 1\uC810 \uC774\uC0C1
-    \uB4DD\uC810\uD558\uAE30"
+  m_text: .
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 00d7aedfd4cad954ba33f091873c17de, type: 2}
   m_sharedMaterial: {fileID: -6416647500256308222, guid: 00d7aedfd4cad954ba33f091873c17de, type: 2}
