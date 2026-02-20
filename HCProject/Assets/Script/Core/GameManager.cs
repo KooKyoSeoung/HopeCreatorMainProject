@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public PitchController pitchController;
     public UI_Board uiBoard;
     public UI_Quest uiQuest;
+    public UI_GameResult uiGameResult;
 
     [Header("Result UI")]
     [SerializeField] private GameObject strikeUI;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         UpdateBoard();
         UpdateQuest(stageData);
         HideResultUI();
+        HideGameResult();
         StopAllCoroutines();
         StartCoroutine(GameLoop());
     }
@@ -84,6 +86,7 @@ public class GameManager : MonoBehaviour
             if (stageResult == StageResult.Clear || stageResult == StageResult.Failed)
             {
                 ChangeState(GameState.Idle);
+                ShowGameResult(stageResult);
                 yield break;
             }
         }
@@ -127,6 +130,18 @@ public class GameManager : MonoBehaviour
     {
         if (uiQuest != null)
             uiQuest.SetQuest(stageData);
+    }
+
+    private void ShowGameResult(StageResult stageResult)
+    {
+        if (uiGameResult != null)
+            uiGameResult.Show(currentInningState, stageResult);
+    }
+
+    private void HideGameResult()
+    {
+        if (uiGameResult != null)
+            uiGameResult.Hide();
     }
 
     public void ChangeState(GameState state)
