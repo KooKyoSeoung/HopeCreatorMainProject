@@ -15,7 +15,7 @@ public class HitJudge : MonoBehaviour
         float center = (start + end) * 0.5f;
         float diff = Mathf.Abs(time - center);
 
-        if (diff < 0.4f)
+        if (diff < 0.04f)
             return HitResult.Perfect;
 
         return HitResult.Good;

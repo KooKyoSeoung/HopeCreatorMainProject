@@ -57,7 +57,10 @@ public class GameManager : MonoBehaviour
     public void InitializeInning(InningSetup setup)
     {
         currentInningState.Initialize(setup);
-        scoreBefore = (setup != null) ? setup.scoreTop : 0;
+        if (setup != null)
+            scoreBefore = setup.isTop ? setup.scoreTop : setup.scoreBottom;
+        else
+            scoreBefore = 0;
     }
 
     private IEnumerator GameLoop()

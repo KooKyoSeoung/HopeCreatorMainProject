@@ -18,7 +18,7 @@ MonoBehaviour:
     ballCount: 0
     outCount: 0
     inning: 9
-    isTop: 1
+    isTop: 0
     runnerOnFirst: 1
     runnerOnSecond: 1
     runnerOnThird: 1

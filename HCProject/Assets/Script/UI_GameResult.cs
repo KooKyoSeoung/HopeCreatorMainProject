@@ -39,7 +39,10 @@ public class UI_GameResult : MonoBehaviour
             hitCountText.text = state.TotalHits.ToString();
 
         if (scoreCountText != null)
-            scoreCountText.text = (state.ScoreTop - scoreBefore).ToString();
+        {
+            int currentPlayerScore = state.IsTop ? state.ScoreTop : state.ScoreBottom;
+            scoreCountText.text = (currentPlayerScore - scoreBefore).ToString();
+        }
 
         gameObject.SetActive(true);
     }

@@ -24,7 +24,7 @@ public class PitchGenerator
             totalTime = 1.0f, startOffset = new Vector2(0f, 0.5f),
             cpOffset1 = new Vector2(0f, 0f),
             cpOffset2 = new Vector2(0f, 0f),
-            hitStart = 0.60f, hitEnd = 0.90f
+            hitStart = 0.6f, hitEnd = 0.9f
         }},
         { PitchType.Curve, new PitchTypeConfig {
             totalTime = 1.8f, startOffset = new Vector2(0f, 1.4f),

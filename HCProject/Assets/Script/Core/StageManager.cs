@@ -24,12 +24,6 @@ public class StageManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
-    {
-        if (currentStageData != null)
-            GameManager.Instance.StartStage(currentStageData);
-    }
-
     public void InitStage(StageData stageData)
     {
         currentStageData = stageData;
@@ -55,14 +49,12 @@ public class StageManager : MonoBehaviour
         if (CheckQuestComplete(state))
         {
             Result = StageResult.Clear;
-            Debug.Log($"Stage Clear! : {currentStageData.stageName}");
             return;
         }
 
         if (state.OutCount >= 3)
         {
             Result = StageResult.Failed;
-            Debug.Log($"Stage Failed 3 Outs : {currentStageData.stageName}");
             return;
         }
     }
@@ -90,7 +82,8 @@ public class StageManager : MonoBehaviour
 
     private int GetCurrentScore()
     {
-        return GameManager.Instance.CurrentInning.ScoreTop;
+        InningState state = GameManager.Instance.CurrentInning;
+        return state.IsTop ? state.ScoreTop : state.ScoreBottom;
     }
 }
 
