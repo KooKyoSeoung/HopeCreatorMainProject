@@ -17,9 +17,9 @@ public class UI_GameResult : MonoBehaviour
     [Header("Info Dynamic")]
     [SerializeField] private TextMeshProUGUI outCountText;
     [SerializeField] private TextMeshProUGUI hitCountText;
-    [SerializeField] private TextMeshProUGUI homerunCountText;
+    [SerializeField] private TextMeshProUGUI scoreCountText;
 
-    public void Show(InningState state, StageResult stageResult)
+    public void Show(InningState state, StageResult stageResult, int scoreBefore)
     {
         bool isClear = stageResult == StageResult.Clear;
 
@@ -38,8 +38,8 @@ public class UI_GameResult : MonoBehaviour
         if (hitCountText != null)
             hitCountText.text = state.TotalHits.ToString();
 
-        if (homerunCountText != null)
-            homerunCountText.text = state.TotalHomeruns.ToString();
+        if (scoreCountText != null)
+            scoreCountText.text = (state.ScoreTop - scoreBefore).ToString();
 
         gameObject.SetActive(true);
     }

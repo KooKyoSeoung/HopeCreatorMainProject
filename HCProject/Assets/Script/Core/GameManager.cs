@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private PitchGenerator pitchGenerator;
     private InningState currentInningState;
+    private int scoreBefore;
 
     public InningState CurrentInning => currentInningState;
 
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     public void InitializeInning(InningSetup setup)
     {
         currentInningState.Initialize(setup);
+        scoreBefore = (setup != null) ? setup.scoreTop : 0;
     }
 
     private IEnumerator GameLoop()
@@ -135,7 +137,7 @@ public class GameManager : MonoBehaviour
     private void ShowGameResult(StageResult stageResult)
     {
         if (uiGameResult != null)
-            uiGameResult.Show(currentInningState, stageResult);
+            uiGameResult.Show(currentInningState, stageResult, scoreBefore);
     }
 
     private void HideGameResult()

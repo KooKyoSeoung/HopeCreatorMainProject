@@ -287,7 +287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -535, y: 83}
+  m_AnchoredPosition: {x: 227, y: 86}
   m_SizeDelta: {x: 233.627, y: 61.6964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &183306206
@@ -791,7 +791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390, y: 267}
+  m_AnchoredPosition: {x: 390, y: 267}
   m_SizeDelta: {x: 574.0346, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355476834
@@ -918,14 +918,14 @@ RectTransform:
   m_GameObject: {fileID: 380171686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1394068682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 483, y: -58.418}
+  m_AnchoredPosition: {x: -378, y: -57.976}
   m_SizeDelta: {x: 600.7575, y: 963.1634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380171688
@@ -1048,7 +1048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 483, y: -471.8}
+  m_AnchoredPosition: {x: -378, y: -471.8}
   m_SizeDelta: {x: 582.3865, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &393416653
@@ -1294,7 +1294,7 @@ GameObject:
   - component: {fileID: 479910618}
   - component: {fileID: 479910617}
   m_Layer: 5
-  m_Name: S_Info_HomerunCnt
+  m_Name: S_Info_ScoreCnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1316,7 +1316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -535, y: -89}
+  m_AnchoredPosition: {x: 226.99997, y: -86}
   m_SizeDelta: {x: 233.627, y: 61.6964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479910617
@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCD1D \uD648\uB7F0 \uC218"
+  m_text: "\uCD1D \uB4DD\uC810 \uC218"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c029bf36601318c4fbc5d89653c12f61, type: 2}
   m_sharedMaterial: {fileID: -6016676400876844999, guid: c029bf36601318c4fbc5d89653c12f61, type: 2}
@@ -2034,7 +2034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -535, y: -3}
+  m_AnchoredPosition: {x: 226.99997, y: 0.00000023841858}
   m_SizeDelta: {x: 233.627, y: 61.6964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697633205
@@ -2057,7 +2057,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCD1D \uC548\uD0C0 \uC218"
+  m_text: "\uCD1D \uD0C0\uACA9 \uC218"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c029bf36601318c4fbc5d89653c12f61, type: 2}
   m_sharedMaterial: {fileID: -6016676400876844999, guid: c029bf36601318c4fbc5d89653c12f61, type: 2}
@@ -2687,7 +2687,7 @@ GameObject:
   - component: {fileID: 1005950592}
   - component: {fileID: 1005950591}
   m_Layer: 5
-  m_Name: D_Info_HomerunCnt
+  m_Name: D_Info_ScoreCnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2709,7 +2709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -184, y: -89}
+  m_AnchoredPosition: {x: 578, y: -86}
   m_SizeDelta: {x: 233.627, y: 61.6964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005950591
@@ -3045,7 +3045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -184, y: -3}
+  m_AnchoredPosition: {x: 578, y: 0.00000023841858}
   m_SizeDelta: {x: 233.627, y: 61.6964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1101955743
@@ -3681,10 +3681,10 @@ RectTransform:
   - {fileID: 393416652}
   m_Father: {fileID: 687633830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394068683
 MonoBehaviour:
@@ -3705,7 +3705,7 @@ MonoBehaviour:
   characterText: {fileID: 393416653}
   outCountText: {fileID: 1520380063}
   hitCountText: {fileID: 1101955743}
-  homerunCountText: {fileID: 1005950591}
+  scoreCountText: {fileID: 1005950591}
 --- !u!1 &1424276227
 GameObject:
   m_ObjectHideFlags: 0
@@ -3876,7 +3876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -380, y: -342}
+  m_AnchoredPosition: {x: 390, y: -342}
   m_SizeDelta: {x: 395.1263, y: 91.8279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455059298
@@ -4007,7 +4007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -184, y: 83}
+  m_AnchoredPosition: {x: 578, y: 86}
   m_SizeDelta: {x: 233.627, y: 61.6964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1520380063
@@ -4905,10 +4905,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1394068682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004943871
 MonoBehaviour:
