@@ -3319,7 +3319,7 @@ MonoBehaviour:
   - {fileID: 2053514581}
   - {fileID: 1218020316}
   bgmVolume: 0.8
-  sfxVolume: 1.4
+  sfxVolume: 1.5
 --- !u!1 &999396749
 GameObject:
   m_ObjectHideFlags: 0
