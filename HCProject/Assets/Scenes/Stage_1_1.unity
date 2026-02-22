@@ -3301,9 +3301,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   bgmSource: {fileID: 235675696}
-  bgmClips: []
+  bgmClips:
+  - {fileID: 8300000, guid: 89aa342fe034e0d40b11ff8f3b54dfcf, type: 3}
   sfxSource: {fileID: 1950652371}
-  sfxClips: []
+  sfxClips:
+  - {fileID: 8300000, guid: 858bee9f405f68642ba4333d65d672bc, type: 3}
+  - {fileID: 8300000, guid: 8710cc14f21f6644c8384ef30b856333, type: 3}
+  - {fileID: 8300000, guid: e803e44f424338c489198f8ee40a3c92, type: 3}
+  - {fileID: 8300000, guid: 8a7da59a59a58a943a40f600c4580bde, type: 3}
 --- !u!1 &999396749
 GameObject:
   m_ObjectHideFlags: 0
