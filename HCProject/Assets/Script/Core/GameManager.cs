@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
         UpdateQuest(stageData);
         HideResultUI();
         HideGameResult();
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayBGM("BGM");
+
         StopAllCoroutines();
         StartCoroutine(GameLoop());
     }

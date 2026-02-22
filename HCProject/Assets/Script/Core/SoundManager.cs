@@ -1,21 +1,33 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
+[System.Serializable]
+public class Sound
+{
+    public string name;
+    public AudioClip clip;
+}
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    [Header("Option")]
-    [SerializeField] private bool dontDestroyOnLoad = true;
-
     [Header("BGM")]
-    [SerializeField] private AudioSource bgmSource;
-    [SerializeField] private AudioClip[] bgmClips;
-    private float bgmVolume = 1f;
+    [SerializeField] private Sound[] arrayBGM;
+    [SerializeField] private AudioSource bgmPlayer;
 
     [Header("SFX")]
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioClip[] sfxClips;
-    private float sfxVolume = 1f;
+    [SerializeField] private Sound[] arraySFX;
+    [SerializeField] private AudioSource[] sfxPlayerArray;
+
+    [Header("Volume")]
+    [SerializeField] private float bgmVolume = 0.8f;
+    [SerializeField] private float sfxVolume = 0.6f;
+
+    private List<AudioSource> sfxPlayers;
+    private Dictionary<string, AudioClip> dicBGM;
+    private Dictionary<string, AudioClip> dicSFX;
 
     void Awake()
     {
@@ -25,68 +37,77 @@ public class SoundManager : MonoBehaviour
             return;
         }
         Instance = this;
-        if (dontDestroyOnLoad)
-            DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
+
+        dicBGM = new Dictionary<string, AudioClip>();
+        dicSFX = new Dictionary<string, AudioClip>();
+
+        foreach (Sound sound in arrayBGM)
+            dicBGM[sound.name] = sound.clip;
+
+        foreach (Sound sound in arraySFX)
+            dicSFX[sound.name] = sound.clip;
+
+        sfxPlayers = sfxPlayerArray.ToList();
+        sfxPlayers.ForEach(p => p.volume = sfxVolume);
     }
 
-    public void PlayBGM(int index)
+    public void PlayBGM(string bgmName)
     {
-        if (bgmClips == null || index < 0 || index >= bgmClips.Length)
+        if (!dicBGM.ContainsKey(bgmName))
+        {
+            Debug.LogWarning($"[SoundManager] BGM not found: {bgmName}");
             return;
-        AudioClip clip = bgmClips[index];
-        if (clip == null)
-            return;
-        if (bgmSource.isPlaying && bgmSource.clip == clip)
-            return;
-        bgmSource.clip = clip;
-        bgmSource.volume = bgmVolume;
-        bgmSource.Play();
-    }
+        }
 
-    public void PlayBGM(AudioClip clip)
-    {
-        if (clip == null)
+        if (bgmPlayer.isPlaying && bgmPlayer.clip == dicBGM[bgmName])
             return;
-        if (bgmSource.isPlaying && bgmSource.clip == clip)
-            return;
-        bgmSource.clip = clip;
-        bgmSource.volume = bgmVolume;
-        bgmSource.Play();
+
+        bgmPlayer.clip = dicBGM[bgmName];
+        bgmPlayer.volume = bgmVolume;
+        bgmPlayer.Play();
     }
 
     public void StopBGM()
     {
-        bgmSource.Stop();
-        bgmSource.clip = null;
+        bgmPlayer.Stop();
+        bgmPlayer.clip = null;
+    }
+
+    public void PlaySFX(string sfxName)
+    {
+        if (!dicSFX.ContainsKey(sfxName))
+        {
+            Debug.LogWarning($"[SoundManager] SFX not found: {sfxName}");
+            return;
+        }
+
+        foreach (var sfxPlayer in sfxPlayers)
+        {
+            if (!sfxPlayer.isPlaying)
+            {
+                sfxPlayer.clip = dicSFX[sfxName];
+                sfxPlayer.volume = sfxVolume;
+                sfxPlayer.Play();
+                return;
+            }
+        }
+    }
+
+    public void StopSFX()
+    {
+        sfxPlayers.ForEach(p => p.Stop());
     }
 
     public void SetBGMVolume(float volume)
     {
         bgmVolume = Mathf.Clamp01(volume);
-        bgmSource.volume = bgmVolume;
-    }
-
-    public void PlaySFX(int index)
-    {
-        if (sfxClips == null || index < 0 || index >= sfxClips.Length)
-            return;
-        AudioClip clip = sfxClips[index];
-        if (clip == null)
-            return;
-        sfxSource.volume = sfxVolume;
-        sfxSource.PlayOneShot(clip);
-    }
-
-    public void PlaySFX(AudioClip clip)
-    {
-        if (clip == null)
-            return;
-        sfxSource.volume = sfxVolume;
-        sfxSource.PlayOneShot(clip);
+        bgmPlayer.volume = bgmVolume;
     }
 
     public void SetSFXVolume(float volume)
     {
         sfxVolume = Mathf.Clamp01(volume);
+        sfxPlayers.ForEach(p => p.volume = sfxVolume);
     }
 }

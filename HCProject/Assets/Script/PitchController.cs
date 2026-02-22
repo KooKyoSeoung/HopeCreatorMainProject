@@ -44,6 +44,7 @@ public class PitchController : MonoBehaviour
         if (ballProjection != null)
             ballProjection.StartProjection(pitch.totalTime, pitch.startPosition, pitch.targetPosition, pitch.controlPoint1, pitch.controlPoint2);
 
+        SoundManager.Instance.PlaySFX("Pitch_Release");
         GameManager.Instance.ChangeState(GameState.Pitching);
     }
 
@@ -60,19 +61,34 @@ public class PitchController : MonoBehaviour
     {
         LastResult = HitJudge.Judge(normalizedTime, pitch.hitStart, pitch.hitEnd, pitch.isStrike);
 
+        SoundManager.Instance.PlaySFX("Bat_Swing");
+
+        if (LastResult == HitResult.Foul || LastResult == HitResult.Good || LastResult == HitResult.Perfect)
+            SoundManager.Instance.PlaySFX("Hit");
+
         if (ballProjection != null && LastResult != HitResult.Strike)
             ballProjection.StopProjection();
 
-        GameManager.Instance.ChangeState(GameState.Result);
         batterSprite.SwingSprite();
+
+        if (LastResult != HitResult.Strike)
+            GameManager.Instance.ChangeState(GameState.Result);
     }
 
     private void OnPitchFinished()
     {
         if (inputUsed)
+        {
+            if (LastResult == HitResult.Strike)
+            {
+                SoundManager.Instance.PlaySFX("Catch");
+                GameManager.Instance.ChangeState(GameState.Result);
+            }
             return;
+        }
 
         LastResult = pitch.isStrike ? HitResult.Strike : HitResult.Ball;
+        SoundManager.Instance.PlaySFX("Catch");
         GameManager.Instance.ChangeState(GameState.Result);
     }
 }
